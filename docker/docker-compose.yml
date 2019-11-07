@@ -1,1 +1,8 @@
 version: '3.4'
+
+services:
+  registration:
+    image: fluffyspoon.registration
+    build:
+      dockerfile: src/fluffyspoon.registration/Dockerfile
+      context: ..
