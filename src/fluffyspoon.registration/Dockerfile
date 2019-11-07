@@ -14,7 +14,7 @@ WORKDIR "src/fluffyspoon.registration"
 RUN dotnet build "fluffyspoon.registration.csproj" /p:Version=$VERSION -c Release  -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "fluffyspoon.registration.csproj" /p:Version=$VERSION -c Release -o /app/publish
+RUN dotnet publish "fluffyspoon.registration.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

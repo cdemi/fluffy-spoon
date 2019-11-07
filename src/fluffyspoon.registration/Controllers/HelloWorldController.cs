@@ -8,6 +8,6 @@ namespace fluffyspoon.registration.Controllers
     public class HelloWorldController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<string> Get() => Ok("Hello World!");
+        public ActionResult<string> Get() => Ok("Hello Test!");
     }
 }
