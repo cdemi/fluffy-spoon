@@ -1,1 +1,6 @@
 version: '3.4'
+
+services:
+  registration:
+    ports:
+      - "5000:8080"

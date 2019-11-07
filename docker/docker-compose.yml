@@ -6,3 +6,5 @@ services:
     build:
       dockerfile: src/fluffyspoon.registration/Dockerfile
       context: ..
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
