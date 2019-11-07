@@ -23,6 +23,7 @@ namespace fluffyspoon.registration
             // Info Management
             services.ConfigureInfoManagement(Configuration);
 
+            
             // Health Checks
             services.ConfigureHealthChecks(Configuration);
             services.AddHealthChecks();

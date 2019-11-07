@@ -4,13 +4,14 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0.100 AS build
 WORKDIR /sln
+ARG VERSION=1
 COPY NuGet.Config .
 COPY packages/ ./packages
 COPY ["src/fluffyspoon.registration/fluffyspoon.registration.csproj", "src/fluffyspoon.registration/"]
 RUN dotnet restore "src/fluffyspoon.registration/fluffyspoon.registration.csproj"
 COPY . .
 WORKDIR "src/fluffyspoon.registration"
-RUN dotnet build "fluffyspoon.registration.csproj" -c Release -o /app/build
+RUN dotnet build "fluffyspoon.registration.csproj" -c Release /p:Version=$VERSION -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "fluffyspoon.registration.csproj" -c Release -o /app/publish
