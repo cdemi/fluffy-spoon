@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <Product>$(AssemblyName) ($(TargetFramework))</Product>
+    <DefaultLanguage>en-GB</DefaultLanguage>
+    <Authors>Gaming Innovation Group</Authors>
+    <Copyright>© $([System.DateTime]::Now.Year) Gaming Innovation Group</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryType>git</RepositoryType>
+    <!-- Root control Version Prefix -->
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <VersionPrefix>1.0.0</VersionPrefix>
+  </PropertyGroup>
+
+  <!-- CI Helpers -->
+  <PropertyGroup>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)/artifacts/nugets</PackageOutputPath>
+    <PackageOutputPath Condition=" $(BUILD_ARTIFACTS_NUGET_DIRECTORY) != '' ">$(BUILD_ARTIFACTS_NUGET_DIRECTORY)</PackageOutputPath>    
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+</Project>
