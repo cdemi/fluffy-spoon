@@ -44,7 +44,7 @@ stages:
         tags: |
           $(tag)
           latest
-  - job: Push Image
+  - job: Push
     displayName: Push Image
     pool:
       vmImage: $(vmImageName)
