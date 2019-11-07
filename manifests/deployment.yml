@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: registration 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: registration 
+    spec:
+      containers:
+        - name: registration 
+          image: fluffyspoon.azurecr.io/registration
+          ports:
+          - containerPort: 8080
