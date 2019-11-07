@@ -44,13 +44,8 @@ stages:
         tags: |
           $(tag)
           latest
-  - job: Push
-    displayName: Push Image
-    pool:
-      vmImage: $(vmImageName)
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-    steps:
     - task: Docker@2
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
       displayName: push an image to container registry
       inputs:
         command: push
