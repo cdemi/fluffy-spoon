@@ -24,6 +24,7 @@ namespace fluffyspoon.registration
             services.ConfigureInfoManagement(Configuration);
 
             // Health Checks
+            services.ConfigureHealthChecks(Configuration);
             services.AddHealthChecks();
             
             // Web Api
