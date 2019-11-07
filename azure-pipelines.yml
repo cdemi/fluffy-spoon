@@ -10,7 +10,7 @@ variables:
   dockerRegistryServiceConnection: '3d4c30e8-63b0-4251-8a32-d385da11fb82'
   imageRepository: 'fluffyspoonregistration'
   containerRegistry: 'fluffyspoon.azurecr.io'
-  dockerfilePath: 'src/fluffyspoon.registration/Dockerfile'
+  dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   
   # Agent VM image name
