@@ -13,7 +13,6 @@ COPY . .
 WORKDIR "src/fluffyspoon.registration"
 ARG VERSION=1
 RUN dotnet publish "fluffyspoon.registration.csproj" /p:Version=$VERSION -c Release -o /app/publish
-ARG GH_USERNAME=
 ARG GH_TOKEN=
 RUN /sln/push.sh
 
