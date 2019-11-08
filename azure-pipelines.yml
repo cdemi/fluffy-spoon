@@ -40,7 +40,7 @@ stages:
         dockerfile: $(dockerfilePath)
         buildContext: .
         containerRegistry: $(dockerRegistryServiceConnection)
-        arguments: '--build-arg VERSION=$(Build.BuildNumber)'
+        arguments: '--build-arg VERSION=$(Build.BuildNumber) --build-arg GH_USERNAME=$(GH_USERNAME) --build-arg GH_TOKEN=$(GH_TOKEN)'
         tags: |
           $(tag)
           latest
