@@ -1,4 +1,4 @@
-using fluffyspoon.contracts;
+using demofluffyspoon.contracts;
 using fluffyspoon.registration.contracts.Grains;
 using Orleans;
 using Orleans.Streams;

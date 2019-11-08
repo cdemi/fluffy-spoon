@@ -1,4 +1,4 @@
-namespace fluffyspoon.contracts
+namespace demofluffyspoon.contracts
 {
     public class UserVerifiedEvent
     {

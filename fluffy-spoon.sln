@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.registration.co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{2575B22C-D459-4CB8-9C86-F995D217F71C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.contracts", "src\fluffyspoon.contracts\fluffyspoon.contracts.csproj", "{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demofluffyspoon.contracts", "src\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj", "{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
