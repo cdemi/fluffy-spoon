@@ -19,7 +19,6 @@
     <PackageReference Include="GiG.Core.Orleans.Clustering.Consul" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Clustering.Kubernetes" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Silo" Version="1.2.3.209" />
-    <PackageReference Include="GiG.Core.Orleans.Silo.Dashboard" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Streams" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.Docs" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.FluentValidation" Version="1.2.3.209" />

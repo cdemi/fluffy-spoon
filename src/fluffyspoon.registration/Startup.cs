@@ -95,7 +95,7 @@ namespace fluffyspoon.registration
                 BasePath = "/dashboard",
                 HostSelf = false
             });
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

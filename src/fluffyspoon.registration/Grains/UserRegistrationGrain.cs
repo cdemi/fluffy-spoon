@@ -10,15 +10,15 @@ namespace fluffyspoon.registration.Grains
     public class UserRegistrationGrain : Grain<UserRegistrationState>, IUserRegistrationGrain, IAsyncObserver<UserVerifiedEvent>
     {
         private IAsyncStream<UserRegisteredEvent> _userRegisteredStream;
-        private IAsyncStream<UserVerifiedEvent> _userVerifiedStream;
 
         public override async Task OnActivateAsync()
         {
             var streamProvider = GetStreamProvider(Constants.StreamProviderName);
-            _userVerifiedStream = streamProvider.GetStream<UserVerifiedEvent>(this.GetPrimaryKey(), nameof(UserVerifiedEvent));
+
             _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(this.GetPrimaryKey(), nameof(UserRegisteredEvent));
 
-            await _userVerifiedStream.SubscribeAsync(this);
+            var userVerifiedStream = streamProvider.GetStream<UserVerifiedEvent>(this.GetPrimaryKey(), nameof(UserVerifiedEvent));
+            await userVerifiedStream.SubscribeAsync(this);
             
             await base.OnActivateAsync();
         }
