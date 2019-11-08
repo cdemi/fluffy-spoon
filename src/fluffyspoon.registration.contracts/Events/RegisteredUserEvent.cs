@@ -5,5 +5,7 @@ namespace fluffyspoon.registration.contracts.Streams
         public string Name { get; set; }
         
         public string Surname { get; set; }
+        
+        public string Email { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace fluffyspoon.registration.Controllers
         [ProducesResponseType((int) HttpStatusCode.Accepted)]
         public async Task<ActionResult> Post([FromBody] RegisterUserModel model)
         {
-            await _client.GetGrain<IRegistrationGrain>(model.Email).RegisterAsync(model.Name, model.Surname);
+            await _client.GetGrain<IRegistrationGrain>(Guid.NewGuid()).RegisterAsync(model.Name, model.Surname, model.Email);
 
             return Accepted();
         }

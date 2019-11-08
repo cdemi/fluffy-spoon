@@ -19,9 +19,9 @@ namespace fluffyspoon.registration.Grains
             await base.OnActivateAsync();
         }
         
-        public Task RegisterAsync(string name, string surname)
+        public Task RegisterAsync(string name, string surname, string email)
         {
-            _registeredUserEvent.OnNextAsync(new RegisteredUserEvent {Name = name, Surname = surname});
+            _registeredUserEvent.OnNextAsync(new RegisteredUserEvent {Name = name, Surname = surname, Email = email});
             
             return Task.CompletedTask;
         }
