@@ -1,6 +1,6 @@
-namespace fluffyspoon.registration.contracts.Streams
+namespace fluffyspoon.contracts
 {
-    public class RegisteredUserEvent
+    public class UserRegisteredEvent
     {
         public string Name { get; set; }
         

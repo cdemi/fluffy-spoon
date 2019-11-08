@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.registration.co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{2575B22C-D459-4CB8-9C86-F995D217F71C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.contracts", "src\fluffyspoon.contracts\fluffyspoon.contracts.csproj", "{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D0E6F1B9-126E-4B35-B319-94002A646122}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0E6F1B9-126E-4B35-B319-94002A646122}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0E6F1B9-126E-4B35-B319-94002A646122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{2575B22C-D459-4CB8-9C86-F995D217F71C} = {3738733D-F126-4482-9CDB-BFC6B1077B3B}
 		{0F12CBAA-7B9F-4AA0-BC43-626899818D02} = {2575B22C-D459-4CB8-9C86-F995D217F71C}
 		{D0E6F1B9-126E-4B35-B319-94002A646122} = {2575B22C-D459-4CB8-9C86-F995D217F71C}
+		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1} = {2575B22C-D459-4CB8-9C86-F995D217F71C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {809227EE-12CF-4670-B404-C6339DCBB1A0}

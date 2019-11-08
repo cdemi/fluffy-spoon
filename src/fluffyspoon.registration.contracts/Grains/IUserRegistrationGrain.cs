@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace fluffyspoon.registration.contracts.Grains
 {
-    public interface IRegistrationGrain : IGrainWithGuidKey
+    public interface IUserRegistrationGrain : IGrainWithGuidKey
     {
         Task RegisterAsync(string name, string surname, string email);
     }

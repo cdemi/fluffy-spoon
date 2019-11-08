@@ -33,6 +33,7 @@
    </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\fluffyspoon.contracts\fluffyspoon.contracts.csproj" />
     <ProjectReference Include="..\fluffyspoon.registration.contracts\fluffyspoon.registration.contracts.csproj" />
   </ItemGroup>
   

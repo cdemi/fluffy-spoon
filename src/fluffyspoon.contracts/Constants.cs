@@ -1,4 +1,4 @@
-namespace fluffyspoon.registration.contracts
+namespace fluffyspoon.contracts
 {
     /// <summary>
     /// Orleans Constants.
