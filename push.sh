@@ -1,7 +1,7 @@
 #/bin/sh
-if [ -z "$GH_USERNAME" ]
+if [ -z "$1" ]
 then
       echo "Skipping NuGet Push..."
 else
-      dotnet nuget push /sln/**/*.nupkg -s "https://nuget.pkg.github.com/cdemi/index.json" -k $GH_USERNAME:$GH_TOKEN
+      dotnet nuget push /sln/**/*.nupkg -s "https://nuget.pkg.github.com/cdemi/index.json" -k $1:$2
 fi
