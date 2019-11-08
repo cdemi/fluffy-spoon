@@ -45,6 +45,7 @@ stages:
           $(tag)
           latest
     - task: Docker@2
+      condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
       displayName: push an image to container registry
       inputs:
         command: push
@@ -57,6 +58,7 @@ stages:
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   jobs:
   - deployment: Deploy
     displayName: Deploy
