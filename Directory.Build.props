@@ -10,7 +10,6 @@
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
 
   <!-- CI Helpers -->

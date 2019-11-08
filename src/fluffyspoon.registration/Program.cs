@@ -14,12 +14,13 @@ namespace fluffyspoon.registration
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseApplicationMetadata()
                 .ConfigureServices(x => x.AddCorrelationAccessor())
                 .ConfigureExternalConfiguration()
                 .ConfigureLogging()
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .UseOrleans(Startup.ConfigureOrleans);
     }
 }
