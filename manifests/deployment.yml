@@ -15,7 +15,7 @@ spec:
           - name: ASPNETCORE_URLS
             value: http://+:8080
           - name: Logging__MinimumLevel 
-            value: Error 
+            value: Information 
           - name: Orleans__MembershipProvider__Name
             value: Kubernetes
           - name: Orleans__Streams__Kafka__Brokers
