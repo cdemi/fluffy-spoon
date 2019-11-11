@@ -18,6 +18,8 @@ spec:
             value: Error 
           - name: Orleans__MembershipProvider__Name
             value: Kubernetes
+          - name: Orleans__Streams__Kafka__Brokers
+            value: cp-kafka:9092
           image: fluffyspoon.azurecr.io/registration
           ports:
           - containerPort: 8080

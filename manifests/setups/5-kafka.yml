@@ -1,21 +1,21 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: kafka 
+  name: cp-kafka 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: kafka 
+        app: cp-kafka 
     spec:
       containers:
-        - name: kafka
+        - name: cp-kafka
           env:
           - name: KAFKA_ZOOKEEPER_CONNECT
             value: zookeeper:2181
           - name: KAFKA_ADVERTISED_LISTENERS 
-            value: PLAINTEXT://kafka:9092 
+            value: PLAINTEXT://cp-kafka:9092 
           - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
             value: "1"
           image: confluentinc/cp-kafka:latest
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: kafka
+    name: cp-kafka
 spec:
     type: ClusterIP
     ports:
     - port: 9092
     selector:
-        app: kafka
+        app: cp-kafka
