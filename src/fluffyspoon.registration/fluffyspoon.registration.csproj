@@ -19,7 +19,9 @@
     <PackageReference Include="GiG.Core.Orleans.Clustering.Consul" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Clustering.Kubernetes" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Silo" Version="1.2.3.209" />
+    <PackageReference Include="GiG.Core.Orleans.Storage.Npgsql" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Orleans.Streams" Version="1.2.3.209" />
+    <PackageReference Include="GiG.Core.Orleans.Streams.Kafka" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.Docs" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.FluentValidation" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.Hosting" Version="1.2.3.209" />
@@ -28,12 +30,12 @@
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.0.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Orleans.Streams.Kafka" Version="4.0.0-dev-118" />
     <PackageReference Include="OrleansDashboard" Version="3.0.3" />
    </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj" />
-    <ProjectReference Include="..\fluffyspoon.registration.contracts\fluffyspoon.registration.contracts.csproj" />
   </ItemGroup>
   
 </Project>

@@ -8,6 +8,6 @@ namespace demofluffyspoon.contracts
         /// <summary>
         /// The name for the Stream Provider.
         /// </summary>
-        public const string StreamProviderName = "SMSProvider";
+        public const string StreamProviderName = "StreamProvider";
     }
 }

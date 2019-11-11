@@ -1,4 +1,6 @@
 using demofluffyspoon.contracts;
+using demofluffyspoon.contracts.Grains;
+using demofluffyspoon.contracts.Models;
 using FluentValidation.AspNetCore;
 using fluffyspoon.registration.Grains;
 using GiG.Core.DistributedTracing.Web.Extensions;
@@ -9,6 +11,7 @@ using GiG.Core.Orleans.Clustering.Extensions;
 using GiG.Core.Orleans.Clustering.Kubernetes.Extensions;
 using GiG.Core.Orleans.Silo.Extensions;
 using GiG.Core.Orleans.Streams.Extensions;
+using GiG.Core.Orleans.Streams.Kafka.Extensions;
 using GiG.Core.Web.Docs.Extensions;
 using GiG.Core.Web.FluentValidation.Extensions;
 using GiG.Core.Web.Hosting.Extensions;
@@ -62,14 +65,19 @@ namespace fluffyspoon.registration
             var configuration = ctx.Configuration;
 
             builder.ConfigureCluster(configuration)
-                .UseDashboard(x =>
-                {
-                    x.BasePath = "/dashboard";
-                    x.HostSelf = false;
-                })
+                .UseDashboard(x => x.HostSelf = false)
                 .ConfigureEndpoints()
                 .AddAssemblies(typeof(UserRegistrationGrain))
-                .AddSimpleMessageStreamProvider(Constants.StreamProviderName)
+                .AddAssemblies(typeof(IUserRegistrationGrain))
+                .AddKafka(Constants.StreamProviderName)
+                .WithOptions(options =>
+                {
+                    options.FromConfiguration(ctx.Configuration);
+                    options.AddTopic(nameof(UserVerifiedEvent));
+                    options.AddTopic(nameof(UserRegisteredEvent));
+                })
+                .AddJson()
+                .Build()
                 .AddMemoryGrainStorage("PubSubStore")
                 .AddMemoryGrainStorageAsDefault()
                 .UseMembershipProvider(configuration, x =>
@@ -90,11 +98,7 @@ namespace fluffyspoon.registration
             app.UseHealthChecks();
             app.UseInfoManagement();
             app.UseApiDocs();
-            app.UseOrleansDashboard(new DashboardOptions()
-            {
-                BasePath = "/dashboard",
-                HostSelf = false
-            });
+            app.UseOrleansDashboard(new DashboardOptions { BasePath = "/dashboard" });
             app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }

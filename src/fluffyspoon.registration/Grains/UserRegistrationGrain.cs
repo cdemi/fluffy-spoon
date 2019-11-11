@@ -1,5 +1,6 @@
 using demofluffyspoon.contracts;
-using fluffyspoon.registration.contracts.Grains;
+using demofluffyspoon.contracts.Grains;
+using demofluffyspoon.contracts.Models;
 using Orleans;
 using Orleans.Streams;
 using System;
@@ -23,12 +24,16 @@ namespace fluffyspoon.registration.Grains
             await base.OnActivateAsync();
         }
         
-        public Task RegisterAsync(string name, string surname, string email)
+        public async Task RegisterAsync(string name, string surname, string email)
         {
-            _userRegisteredStream.OnNextAsync(new UserRegisteredEvent {Name = name, Surname = surname, Email = email});
+            await _userRegisteredStream.OnNextAsync(new UserRegisteredEvent {Name = name, Surname = surname, Email = email});
+
             State.Status = UserRegistrationStatusEnum.Blocked;
-            
-            return Task.CompletedTask;
+        }
+
+        public Task<UserRegistrationState> GetAsync()
+        {
+            return Task.FromResult(State);
         }
 
         public Task OnNextAsync(UserVerifiedEvent item, StreamSequenceToken token = null)

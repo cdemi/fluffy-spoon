@@ -1,6 +1,14 @@
 version: '3.4'
 
 services:
-  registration:
+  consul:
     ports:
-      - "5000:8080"
+      - "8500:8500"
+
+  kafka:
+    ports:
+      - "9092:9092"
+
+  control-center:
+    ports:
+      - "9021:9021"

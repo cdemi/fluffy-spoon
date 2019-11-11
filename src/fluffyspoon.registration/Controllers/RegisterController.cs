@@ -1,4 +1,5 @@
-﻿using fluffyspoon.registration.contracts.Grains;
+﻿using demofluffyspoon.contracts.Grains;
+using demofluffyspoon.contracts.Models;
 using fluffyspoon.registration.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Orleans;
@@ -19,14 +20,24 @@ namespace fluffyspoon.registration.Controllers
         {
             _client = client;
         }
+        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserRegistrationState>> Get([FromRoute] Guid id)
+        {
+            var result = await _client.GetGrain<IUserRegistrationGrain>(id).GetAsync();
+
+            return Ok(result);
+        }
 
         [HttpPost]
         [ProducesResponseType((int) HttpStatusCode.Accepted)]
-        public async Task<ActionResult> Post([FromBody] RegisterUserModel model)
+        public async Task<ActionResult<Guid>> Post([FromBody] RegisterUserModel model)
         {
-            await _client.GetGrain<IUserRegistrationGrain>(Guid.NewGuid()).RegisterAsync(model.Name, model.Surname, model.Email);
+            var id = Guid.NewGuid();
 
-            return Accepted();
+            await _client.GetGrain<IUserRegistrationGrain>(id).RegisterAsync(model.Name, model.Surname, model.Email);
+
+            return Accepted(id);
         }
     }
 }

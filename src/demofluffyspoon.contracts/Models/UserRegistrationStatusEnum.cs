@@ -1,4 +1,4 @@
-namespace fluffyspoon.registration.Grains
+namespace demofluffyspoon.contracts.Models
 {
     public enum UserRegistrationStatusEnum 
     {

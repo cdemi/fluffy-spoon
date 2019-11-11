@@ -1,5 +1,8 @@
-namespace demofluffyspoon.contracts
+using System;
+
+namespace demofluffyspoon.contracts.Models
 {
+    [Serializable]
     public class UserRegisteredEvent
     {
         public string Name { get; set; }
