@@ -5,7 +5,10 @@
 name: 1.1$(rev:.r)
 
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+    - master
 
 resources:
 - repo: self
