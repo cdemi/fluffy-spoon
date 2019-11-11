@@ -31,7 +31,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Orleans.Streams.Kafka" Version="4.0.0-dev-118" />
-    <PackageReference Include="OrleansDashboard" Version="3.0.3" />
+    <PackageReference Include="OrleansDashboard" Version="3.0.4" />
    </ItemGroup>
 
   <ItemGroup>
