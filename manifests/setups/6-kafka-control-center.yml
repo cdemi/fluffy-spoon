@@ -1,0 +1,45 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: control-center 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: control-center 
+    spec:
+      containers:
+        - name: control-center
+          env:
+          - name: CONTROL_CENTER_BOOTSTRAP_SERVERS
+            value: kafka:9092
+          - name: CONTROL_CENTER_ZOOKEEPER_CONNECT 
+            value: zookeeper:2181 
+          - name: CONTROL_CENTER_REPLICATION_FACTOR
+            value: "1"
+          - name: CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS
+            value: "1"
+          - name: CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS
+            value: "1"
+          - name: CONFLUENT_METRICS_TOPIC_REPLICATION
+            value: "1"
+          image: confluentinc/cp-enterprise-control-center:5.3.1
+          ports:
+          - containerPort: 9021
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: control-center
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: control-center.0d136eaef9f24e1c828e.westeurope.aksapp.io
+    http:
+      paths:
+      - backend:
+          serviceName: control-center
+          servicePort: 9021
+        path: /
