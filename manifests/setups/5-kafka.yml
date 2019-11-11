@@ -17,7 +17,7 @@ spec:
           - name: KAFKA_ADVERTISED_LISTENERS 
             value: PLAINTEXT://kafka:9092 
           - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
-            value: 1
+            value: "1"
           image: confluentinc/cp-kafka:latest
           ports:
           - containerPort: 9092
