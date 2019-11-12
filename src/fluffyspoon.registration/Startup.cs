@@ -10,7 +10,6 @@ using GiG.Core.Orleans.Clustering.Consul.Extensions;
 using GiG.Core.Orleans.Clustering.Extensions;
 using GiG.Core.Orleans.Clustering.Kubernetes.Extensions;
 using GiG.Core.Orleans.Silo.Extensions;
-using GiG.Core.Orleans.Streams.Extensions;
 using GiG.Core.Orleans.Streams.Kafka.Extensions;
 using GiG.Core.Web.Docs.Extensions;
 using GiG.Core.Web.FluentValidation.Extensions;
@@ -54,9 +53,6 @@ namespace fluffyspoon.registration
 
             // Configure Api Behavior Options
             services.ConfigureApiBehaviorOptions();
-            
-            // Add Orleans Streams Services
-            services.AddStreamFactory();
         }
         
         // This method gets called by the runtime. Use this method to configure Orleans.
