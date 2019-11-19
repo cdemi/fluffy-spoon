@@ -64,7 +64,6 @@ namespace fluffyspoon.registration
                 .UseDashboard(x => x.HostSelf = false)
                 .ConfigureEndpoints()
                 .AddAssemblies(typeof(UserRegistrationGrain))
-                .AddAssemblies(typeof(IUserRegistrationGrain))
                 .AddKafka(Constants.StreamProviderName)
                 .WithOptions(options =>
                 {

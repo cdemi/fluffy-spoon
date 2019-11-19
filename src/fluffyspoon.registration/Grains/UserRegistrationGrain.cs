@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace fluffyspoon.registration.Grains
 {
+    [ImplicitStreamSubscription(nameof(UserVerifiedEvent))]
     public class UserRegistrationGrain : Grain<UserRegistrationState>, IUserRegistrationGrain, IAsyncObserver<UserVerifiedEvent>
     {
         private IAsyncStream<UserRegisteredEvent> _userRegisteredStream;

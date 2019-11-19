@@ -3,6 +3,5 @@ if [ -z "$GH_TOKEN" ]
 then
       echo "Skipping NuGet Push..."
 else
-      rm -f /sln/artifacts/**/*.symbols.nupkg
-      dotnet nuget push /sln/artifacts/**.nupkg -s "https://api.nuget.org/v3/index.json" -k $GH_TOKEN -n true
+      dotnet nuget push /sln/artifacts/**.nupkg -s "https://api.nuget.org/v3/index.json" -k $GH_TOKEN
 fi
