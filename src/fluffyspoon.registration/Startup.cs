@@ -19,7 +19,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Orleans;
 using Orleans.Hosting;
+using Orleans.Statistics;
+using Orleans.TelemetryConsumers.Prometheus;
 using OrleansDashboard;
+using Prometheus;
 using HostBuilderContext = Microsoft.Extensions.Hosting.HostBuilderContext;
 
 namespace fluffyspoon.registration
@@ -79,7 +82,9 @@ namespace fluffyspoon.registration
                 {
                     x.ConfigureConsulClustering(configuration);
                     x.ConfigureKubernetesClustering(configuration);
-                });
+                })
+                .UseLinuxEnvironmentStatistics()
+                .AddPrometheusTelemetry();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +100,8 @@ namespace fluffyspoon.registration
             app.UseApiDocs();
             app.UseOrleansDashboard(new DashboardOptions { BasePath = "/dashboard" });
             app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseHttpMetrics();
+            app.UseMetricServer();
         }
     }
 }

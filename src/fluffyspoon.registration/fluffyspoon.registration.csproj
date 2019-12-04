@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <ServerGarbageCollection>true</ServerGarbageCollection>
     <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
@@ -25,16 +25,20 @@
     <PackageReference Include="GiG.Core.Web.FluentValidation" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.Hosting" Version="1.2.3.209" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.5.1" />
-    <PackageReference Include="Microsoft.Orleans.Server" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.0.0">
+    <PackageReference Include="Microsoft.Orleans.OrleansTelemetryConsumers.Linux" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Orleans.Server" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Orleans.Streams.Kafka" Version="4.0.0-dev-118" />
-    <PackageReference Include="OrleansDashboard" Version="3.0.4" />
+    <PackageReference Include="OrleansDashboard" Version="3.0.8" />
+    <PackageReference Include="prometheus-net" Version="3.3.0" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="3.3.0" />
    </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj" />
+    <ProjectReference Include="..\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj" />
   </ItemGroup>
   
 </Project>

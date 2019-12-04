@@ -1,0 +1,12 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  - job_name:       'registration-monitor'
+
+    static_configs:
+      - targets: ['registration:8080']
+        labels:
+          group: 'production'

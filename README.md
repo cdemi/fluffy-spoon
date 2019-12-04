@@ -7,10 +7,10 @@ The purpose of this project is to demo microservice architecture using .NET Core
 
 ## List of Services
 
-* Registration: [https://github.com/cdemi/fluffy-spoon]
-* Profile: [https://github.com/cdemi/fluffy-spoon-profile]
-* User Verification: [https://github.com/cdemi/fluffy-spoon-userverification]
-* Email: [https://github.com/cdemi/fluffy-spoon-email]
+* Registration: [Source Code](https://github.com/cdemi/fluffy-spoon)
+* Profile: [Source Code](https://github.com/cdemi/fluffy-spoon-profile)
+* User Verification: [Source Code](https://github.com/cdemi/fluffy-spoon-userverification)
+* Email: [Source Code](https://github.com/cdemi/fluffy-spoon-email)
 
 ## __Build and Run__
 
