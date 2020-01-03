@@ -7,6 +7,8 @@ The purpose of this project is to demo microservice architecture using .NET Core
 
 ## List of Services
 
+All the below services are based on the [fluffy-spoon microservice template](https://github.com/cdemi/fluffy-spoon-template)!
+
 * Registration: [Source Code](https://github.com/cdemi/fluffy-spoon)
 * Profile: [Source Code](https://github.com/cdemi/fluffy-spoon-profile)
 * User Verification: [Source Code](https://github.com/cdemi/fluffy-spoon-userverification)
@@ -16,6 +18,7 @@ The purpose of this project is to demo microservice architecture using .NET Core
 
 To build and run via Docker.
 ```sh
+git clone git@github.com:cdemi/fluffy-spoon.git
 cd docker
 docker-compose up --build
 ```
@@ -23,6 +26,11 @@ docker-compose up --build
 To run all the services together:
 
 ```sh
+git clone git@github.com:cdemi/fluffy-spoon.git
+git clone git@github.com:cdemi/fluffy-spoon-profile.git
+git clone git@github.com:cdemi/fluffy-spoon-userverification.git
+git clone git@github.com:cdemi/fluffy-spoon-email.git
+
 docker-compose -f fluffy-spoon/docker/docker-compose.yml \
  -f fluffy-spoon-profile/docker/docker-compose.yml \
  -f fluffy-spoon-userverification/docker/docker-compose.yml \
