@@ -5,6 +5,7 @@
     <Authors>Gaming Innovation Group</Authors>
     <Copyright>© $([System.DateTime]::Now.Year) Gaming Innovation Group</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <!-- Root control Version Prefix -->
     <AssemblyName>$(MSBuildProjectName)</AssemblyName>
@@ -17,5 +18,9 @@
     <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/nugets</PackageOutputPath>
     <PackageOutputPath Condition=" $(BUILD_ARTIFACTS_NUGET_DIRECTORY) != '' ">$(BUILD_ARTIFACTS_NUGET_DIRECTORY)</PackageOutputPath>    
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" PackagePath="$(PackageLicenseFile)" Visible="false" />
+  </ItemGroup>
 
 </Project>
