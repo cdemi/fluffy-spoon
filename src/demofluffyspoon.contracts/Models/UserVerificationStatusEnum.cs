@@ -1,10 +1,10 @@
 namespace demofluffyspoon.contracts.Models
 {
-    public enum UserRegistrationStatusEnum 
+    public enum UserVerificationStatusEnum
     {
         NotRegistered = 0,
-        Pending,
-        Blocked,
         Verified,
+        Blocked,
+        Duplicate
     }
 }

@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Orleans;
 using Orleans.Hosting;
 using Orleans.Statistics;
+using Orleans.Streams.Kafka.Config;
 using Orleans.TelemetryConsumers.Prometheus;
 using OrleansDashboard;
 using Prometheus;
@@ -70,8 +71,8 @@ namespace fluffyspoon.registration
                 .WithOptions(options =>
                 {
                     options.FromConfiguration(ctx.Configuration);
-                    options.AddTopic(nameof(UserVerifiedEvent));
-                    options.AddTopic(nameof(UserRegisteredEvent));
+                    options.AddTopic(nameof(UserVerifiedEvent), new TopicCreationConfig { AutoCreate = true});
+                    options.AddTopic(nameof(UserRegisteredEvent), new TopicCreationConfig { AutoCreate = true});
                 })
                 .AddJson()
                 .Build()
