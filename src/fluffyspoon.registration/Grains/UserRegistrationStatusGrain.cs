@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace fluffyspoon.registration.Grains
 {
     [ImplicitStreamSubscription(nameof(UserRegisteredEvent))]
-    [ImplicitStreamSubscription(nameof(UserVerifiedEvent))]
-    public class UserRegistrationStatusGrain : Grain<RegistrationStatusState>, IUserRegistrationStatusGrain, IAsyncObserver<UserRegisteredEvent>, IAsyncObserver<UserVerifiedEvent>
+    [ImplicitStreamSubscription(nameof(UserVerificationEvent))]
+    public class UserRegistrationStatusGrain : Grain<RegistrationStatusState>, IUserRegistrationStatusGrain, IAsyncObserver<UserRegisteredEvent>, IAsyncObserver<UserVerificationEvent>
     {
         public override async Task OnActivateAsync()
         {
@@ -21,8 +21,8 @@ namespace fluffyspoon.registration.Grains
             await userRegisteredStream.SubscribeAsync(this);
             
             // Consumer
-            var userVerifiedStream = streamProvider.GetStream<UserVerifiedEvent>(this.GetPrimaryKey(), nameof(UserVerifiedEvent));
-            await userVerifiedStream.SubscribeAsync(this);
+            var userVerificationStream = streamProvider.GetStream<UserVerificationEvent>(this.GetPrimaryKey(), nameof(UserVerificationEvent));
+            await userVerificationStream.SubscribeAsync(this);
 
             await base.OnActivateAsync();
         }
@@ -39,10 +39,15 @@ namespace fluffyspoon.registration.Grains
             return Task.CompletedTask;
         }
         
-        public Task OnNextAsync(UserVerifiedEvent item, StreamSequenceToken token = null)
+        public Task OnNextAsync(UserVerificationEvent item, StreamSequenceToken token = null)
         {
-            State.Status = UserRegistrationStatusEnum.Verified;
-            
+            State.Status = item.Status switch
+            {
+                UserVerificationStatusEnum.Verified => UserRegistrationStatusEnum.Verified,
+                UserVerificationStatusEnum.Blocked => UserRegistrationStatusEnum.Blocked,
+                _ => State.Status
+            };
+
             return Task.CompletedTask;
         }
 

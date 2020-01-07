@@ -71,7 +71,7 @@ namespace fluffyspoon.registration
                 .WithOptions(options =>
                 {
                     options.FromConfiguration(ctx.Configuration);
-                    options.AddTopic(nameof(UserVerifiedEvent), new TopicCreationConfig { AutoCreate = true});
+                    options.AddTopic(nameof(UserVerificationEvent), new TopicCreationConfig { AutoCreate = true});
                     options.AddTopic(nameof(UserRegisteredEvent), new TopicCreationConfig { AutoCreate = true});
                 })
                 .AddJson()
