@@ -57,11 +57,16 @@ namespace fluffyspoon.registration
             // Configure Api Behavior Options
             services.ConfigureApiBehaviorOptions();
         }
-        
+
         // This method gets called by the runtime. Use this method to configure Orleans.
         public static void ConfigureOrleans(HostBuilderContext ctx, ISiloBuilder builder)
         {
             var configuration = ctx.Configuration;
+            var topicConfiguration = new TopicCreationConfig
+            {
+                AutoCreate = true,
+                Partitions = 5
+            };
 
             builder.ConfigureCluster(configuration)
                 .UseDashboard(x => x.HostSelf = false)
@@ -71,8 +76,8 @@ namespace fluffyspoon.registration
                 .WithOptions(options =>
                 {
                     options.FromConfiguration(ctx.Configuration);
-                    options.AddTopic(nameof(UserVerificationEvent), new TopicCreationConfig { AutoCreate = true});
-                    options.AddTopic(nameof(UserRegisteredEvent), new TopicCreationConfig { AutoCreate = true});
+                    options.AddTopic(nameof(UserVerificationEvent), topicConfiguration);
+                    options.AddTopic(nameof(UserRegisteredEvent), topicConfiguration);
                 })
                 .AddJson()
                 .Build()
@@ -98,7 +103,7 @@ namespace fluffyspoon.registration
             app.UseHealthChecks();
             app.UseInfoManagement();
             app.UseApiDocs();
-            app.UseOrleansDashboard(new DashboardOptions { BasePath = "/dashboard" });
+            app.UseOrleansDashboard(new DashboardOptions {BasePath = "/dashboard"});
             app.UseEndpoints(endpoints => endpoints.MapControllers());
             app.UseHttpMetrics();
             app.UseMetricServer();
