@@ -4,7 +4,7 @@
     <DefaultLanguage>en-GB</DefaultLanguage>
     <Authors>Gaming Innovation Group</Authors>
     <Copyright>© $([System.DateTime]::Now.Year) Gaming Innovation Group</Copyright>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>$(MSBuildThisFileDirectory)LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <!-- Root control Version Prefix -->
