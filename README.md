@@ -26,11 +26,19 @@ docker-compose up --build
 To run all the services together:
 
 ```sh
-git clone git@github.com:cdemi/fluffy-spoon.git
-git clone git@github.com:cdemi/fluffy-spoon-profile.git
-git clone git@github.com:cdemi/fluffy-spoon-userverification.git
-git clone git@github.com:cdemi/fluffy-spoon-email.git
+# Download source code
+git clone https://github.com/cdemi/fluffy-spoon.git
+git clone https://github.com/cdemi/fluffy-spoon-profile.git
+git clone https://github.com/cdemi/fluffy-spoon-userverification.git
+git clone https://github.com/cdemi/fluffy-spoon-email.git
 
+# Build docker images
+docker-compose -f fluffy-spoon/docker/docker-compose.yml build
+docker-compose -f fluffy-spoon-profile/docker/docker-compose.yml build
+docker-compose -f fluffy-spoon-userverification/docker/docker-compose.yml build
+docker-compose -f fluffy-spoon-email/docker/docker-compose.yml build
+
+# Run Containers
 docker-compose -f fluffy-spoon/docker/docker-compose.yml \
  -f fluffy-spoon-profile/docker/docker-compose.yml \
  -f fluffy-spoon-userverification/docker/docker-compose.yml \

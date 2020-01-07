@@ -1,6 +1,7 @@
 using demofluffyspoon.contracts;
 using demofluffyspoon.contracts.Grains;
 using demofluffyspoon.contracts.Models;
+using Microsoft.Extensions.Logging;
 using Orleans;
 using Orleans.Streams;
 using System;
@@ -8,50 +9,42 @@ using System.Threading.Tasks;
 
 namespace fluffyspoon.registration.Grains
 {
-    [ImplicitStreamSubscription(nameof(UserVerifiedEvent))]
-    public class UserRegistrationGrain : Grain<UserRegistrationState>, IUserRegistrationGrain, IAsyncObserver<UserVerifiedEvent>
+    public class UserRegistrationGrain : Grain<RegistrationState>, IUserRegistrationGrain
     {
+        private readonly ILogger<RegistrationState> _logger;
+
         private IAsyncStream<UserRegisteredEvent> _userRegisteredStream;
 
+        public UserRegistrationGrain(ILogger<RegistrationState> logger)
+        {
+            _logger = logger;
+        }
+        
         public override async Task OnActivateAsync()
         {
             var streamProvider = GetStreamProvider(Constants.StreamProviderName);
 
-            _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(this.GetPrimaryKey(), nameof(UserRegisteredEvent));
-
-            var userVerifiedStream = streamProvider.GetStream<UserVerifiedEvent>(this.GetPrimaryKey(), nameof(UserVerifiedEvent));
-            await userVerifiedStream.SubscribeAsync(this);
+            // Producer
+            _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(State.Id, nameof(UserRegisteredEvent));
             
             await base.OnActivateAsync();
         }
         
-        public async Task RegisterAsync(string name, string surname, string email)
+        public async Task<Guid?> RegisterAsync(string name, string surname)
         {
+            var email = this.GetPrimaryKeyString();
+
+            if (State.IsRegistered)
+            {
+                _logger.LogWarning("{email} is already registered", email);
+                
+                return null;
+            }
+
             await _userRegisteredStream.OnNextAsync(new UserRegisteredEvent {Name = name, Surname = surname, Email = email});
+            State.IsRegistered = true;
 
-            State.Status = UserRegistrationStatusEnum.Blocked;
-        }
-
-        public Task<UserRegistrationState> GetAsync()
-        {
-            return Task.FromResult(State);
-        }
-
-        public Task OnNextAsync(UserVerifiedEvent item, StreamSequenceToken token = null)
-        {
-            State.Status = UserRegistrationStatusEnum.Verified;
-            
-            return Task.CompletedTask;
-        }
-
-        public Task OnCompletedAsync()
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task OnErrorAsync(Exception ex)
-        {
-            return Task.CompletedTask;
+            return State.Id;
         }
     }
 }

@@ -1,7 +1,11 @@
+using System;
+
 namespace demofluffyspoon.contracts.Models
 {
-    public class UserRegistrationState
+    public class RegistrationState
     {
-        public UserRegistrationStatusEnum Status { get; set; } = UserRegistrationStatusEnum.Unverified;
+        public bool IsRegistered { get; set; }
+        
+        public Guid Id { get; set; } = Guid.NewGuid();
     }
 }

@@ -1,5 +1,4 @@
 using demofluffyspoon.contracts;
-using demofluffyspoon.contracts.Grains;
 using demofluffyspoon.contracts.Models;
 using FluentValidation.AspNetCore;
 using fluffyspoon.registration.Grains;
@@ -66,7 +65,7 @@ namespace fluffyspoon.registration
             builder.ConfigureCluster(configuration)
                 .UseDashboard(x => x.HostSelf = false)
                 .ConfigureEndpoints()
-                .AddAssemblies(typeof(UserRegistrationGrain))
+                .AddAssemblies(typeof(UserRegistrationStatusGrain))
                 .AddKafka(Constants.StreamProviderName)
                 .WithOptions(options =>
                 {

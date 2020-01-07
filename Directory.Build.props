@@ -14,7 +14,7 @@
 
   <!-- CI Helpers -->
   <PropertyGroup>
-    <PackageOutputPath>$(MSBuildThisFileDirectory)/artifacts/nugets</PackageOutputPath>
+    <PackageOutputPath>$(MSBuildThisFileDirectory)artifacts/nugets</PackageOutputPath>
     <PackageOutputPath Condition=" $(BUILD_ARTIFACTS_NUGET_DIRECTORY) != '' ">$(BUILD_ARTIFACTS_NUGET_DIRECTORY)</PackageOutputPath>    
   </PropertyGroup>
 

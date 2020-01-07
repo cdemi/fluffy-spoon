@@ -20,24 +20,30 @@ namespace fluffyspoon.registration.Controllers
         {
             _client = client;
         }
-        
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserRegistrationState>> Get([FromRoute] Guid id)
+        public async Task<ActionResult<RegistrationStatusState>> Get([FromRoute] Guid id)
         {
-            var result = await _client.GetGrain<IUserRegistrationGrain>(id).GetAsync();
+            var result = await _client.GetGrain<IUserRegistrationStatusGrain>(id).GetAsync();
 
             return Ok(result);
         }
 
         [HttpPost]
         [ProducesResponseType((int) HttpStatusCode.Accepted)]
+        [ProducesResponseType((int) HttpStatusCode.Conflict)]
         public async Task<ActionResult<Guid>> Post([FromBody] RegisterUserModel model)
         {
-            var id = Guid.NewGuid();
+            var id = await _client
+                .GetGrain<IUserRegistrationGrain>(model.Email.ToLower())
+                .RegisterAsync(model.Name, model.Surname);
 
-            await _client.GetGrain<IUserRegistrationGrain>(id).RegisterAsync(model.Name, model.Surname, model.Email);
+            if (id.HasValue)
+            {
+                return Accepted(id);
+            }
 
-            return Accepted(id);
+            return Conflict();
         }
     }
 }

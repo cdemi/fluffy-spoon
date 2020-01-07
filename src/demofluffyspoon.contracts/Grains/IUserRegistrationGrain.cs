@@ -1,13 +1,11 @@
-﻿using demofluffyspoon.contracts.Models;
-using Orleans;
+﻿using Orleans;
+using System;
 using System.Threading.Tasks;
 
 namespace demofluffyspoon.contracts.Grains
 {
-    public interface IUserRegistrationGrain : IGrainWithGuidKey
+    public interface IUserRegistrationGrain : IGrainWithStringKey
     {
-        Task RegisterAsync(string name, string surname, string email);
-        
-        Task<UserRegistrationState> GetAsync();
+        Task<Guid?> RegisterAsync(string name, string surname);
     }
 }
