@@ -1,16 +1,21 @@
-apiVersion : apps/v1beta1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: cp-kafka 
+  name: kafka
+  labels:
+    app: kafka
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: kafka
   template:
     metadata:
       labels:
-        app: cp-kafka 
+        app: kafka 
     spec:
       containers:
-        - name: cp-kafka
+        - name: kafka
           env:
           - name: KAFKA_ZOOKEEPER_CONNECT
             value: zookeeper:2181
@@ -25,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: cp-kafka
+    name: kafka
 spec:
     type: ClusterIP
     ports:
     - port: 9092
     selector:
-        app: cp-kafka
+        app: kafka
