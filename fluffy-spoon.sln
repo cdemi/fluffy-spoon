@@ -39,6 +39,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{98433C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.TelemetryConsumers.Prometheus", "src\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj", "{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.registration.grains", "src\fluffyspoon.registration.grains\fluffyspoon.registration.grains.csproj", "{E1546556-DBD8-4D4A-AFE3-958505302151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1546556-DBD8-4D4A-AFE3-958505302151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1546556-DBD8-4D4A-AFE3-958505302151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1546556-DBD8-4D4A-AFE3-958505302151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1546556-DBD8-4D4A-AFE3-958505302151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{98433C1D-3ECB-48B7-A5A6-AE934329E4A9} = {3738733D-F126-4482-9CDB-BFC6B1077B3B}
 		{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1} = {98433C1D-3ECB-48B7-A5A6-AE934329E4A9}
 		{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255} = {98433C1D-3ECB-48B7-A5A6-AE934329E4A9}
+		{E1546556-DBD8-4D4A-AFE3-958505302151} = {2575B22C-D459-4CB8-9C86-F995D217F71C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {809227EE-12CF-4670-B404-C6339DCBB1A0}

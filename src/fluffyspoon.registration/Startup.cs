@@ -1,7 +1,7 @@
 using demofluffyspoon.contracts;
 using demofluffyspoon.contracts.Models;
 using FluentValidation.AspNetCore;
-using fluffyspoon.registration.Grains;
+using fluffyspoon.registration.grains.Grains;
 using GiG.Core.DistributedTracing.Web.Extensions;
 using GiG.Core.HealthChecks.Extensions;
 using GiG.Core.Hosting.Extensions;

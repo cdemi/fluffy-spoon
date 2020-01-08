@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj" />
+    <ProjectReference Include="..\fluffyspoon.registration.grains\fluffyspoon.registration.grains.csproj" />
     <ProjectReference Include="..\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj" />
   </ItemGroup>
   
