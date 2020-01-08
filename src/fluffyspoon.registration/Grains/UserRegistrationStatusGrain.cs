@@ -34,7 +34,7 @@ namespace fluffyspoon.registration.Grains
 
         public Task OnNextAsync(UserRegisteredEvent item, StreamSequenceToken token = null)
         {
-            State.Status = UserRegistrationStatusEnum.Blocked;
+            State.Status = UserRegistrationStatusEnum.Pending;
             
             return Task.CompletedTask;
         }

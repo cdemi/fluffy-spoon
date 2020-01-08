@@ -23,6 +23,7 @@ using Orleans.Streams.Kafka.Config;
 using Orleans.TelemetryConsumers.Prometheus;
 using OrleansDashboard;
 using Prometheus;
+using System.Text.Json.Serialization;
 using HostBuilderContext = Microsoft.Extensions.Hosting.HostBuilderContext;
 
 namespace fluffyspoon.registration
@@ -49,6 +50,10 @@ namespace fluffyspoon.registration
             // Web Api
             services.ConfigureApiDocs(Configuration)
                 .AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                })
                 .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<Startup>());
 
             // Forwarded Headers
