@@ -6,7 +6,7 @@ using Orleans.Streams;
 using System;
 using System.Threading.Tasks;
 
-namespace fluffyspoon.registration.grains.Grains
+namespace demofluffyspoon.registration.grains.Grains
 {
     [ImplicitStreamSubscription(nameof(UserRegisteredEvent))]
     [ImplicitStreamSubscription(nameof(UserVerificationEvent))]

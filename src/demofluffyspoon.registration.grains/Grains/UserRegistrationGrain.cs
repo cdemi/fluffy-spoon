@@ -7,7 +7,7 @@ using Orleans.Streams;
 using System;
 using System.Threading.Tasks;
 
-namespace fluffyspoon.registration.grains.Grains
+namespace demofluffyspoon.registration.grains.Grains
 {
     public class UserRegistrationGrain : Grain<RegistrationState>, IUserRegistrationGrain
     {

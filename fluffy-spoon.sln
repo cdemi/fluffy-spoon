@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{98433C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.TelemetryConsumers.Prometheus", "src\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj", "{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.registration.grains", "src\fluffyspoon.registration.grains\fluffyspoon.registration.grains.csproj", "{E1546556-DBD8-4D4A-AFE3-958505302151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demofluffyspoon.registration.grains", "src\demofluffyspoon.registration.grains\demofluffyspoon.registration.grains.csproj", "{E1546556-DBD8-4D4A-AFE3-958505302151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
