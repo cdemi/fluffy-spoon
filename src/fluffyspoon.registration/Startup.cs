@@ -65,7 +65,7 @@ namespace fluffyspoon.registration
             var topicConfiguration = new TopicCreationConfig
             {
                 AutoCreate = true,
-                Partitions = 5
+                Partitions = 8
             };
 
             builder.ConfigureCluster(configuration)
