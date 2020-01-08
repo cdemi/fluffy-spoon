@@ -1,9 +1,14 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: zookeeper 
+  name: zookeeper-deployment
+  labels:
+    app: zookeeper
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: zookeeper
   template:
     metadata:
       labels:
