@@ -2,6 +2,7 @@ using demofluffyspoon.contracts;
 using demofluffyspoon.contracts.Grains;
 using demofluffyspoon.contracts.Models;
 using Orleans;
+using Orleans.Concurrency;
 using Orleans.Streams;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace demofluffyspoon.registration.grains.Grains
 {
     [ImplicitStreamSubscription(nameof(UserRegisteredEvent))]
     [ImplicitStreamSubscription(nameof(UserVerificationEvent))]
+    [Reentrant]
     public class UserRegistrationStatusGrain : Grain<RegistrationStatusState>, IUserRegistrationStatusGrain, IAsyncObserver<UserRegisteredEvent>, IAsyncObserver<UserVerificationEvent>
     {
         public override async Task OnActivateAsync()
@@ -47,6 +49,8 @@ namespace demofluffyspoon.registration.grains.Grains
                 UserVerificationStatusEnum.Blocked => UserRegistrationStatusEnum.Blocked,
                 _ => State.Status
             };
+            
+            State.UpdatedOn = DateTime.UtcNow;
 
             return Task.CompletedTask;
         }
