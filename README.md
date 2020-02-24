@@ -2,7 +2,7 @@
 
 The purpose of this project is to demo microservice architecture using .NET Core and Microsoft Orleans
 
-[![Build status](https://img.shields.io/azure-devops/build/christopherdemicoli/8c7d1a1e-f368-46cf-bad7-1f2ed587335d/16)](https://img.shields.io/azure-devops/build/christopherdemicoli/8c7d1a1e-f368-46cf-bad7-1f2ed587335d/16) 
+[![Build Status](https://dev.azure.com/christopherdemicoli/fluffy-spoon/_apis/build/status/cdemi.fluffy-spoon?branchName=master)](https://dev.azure.com/christopherdemicoli/fluffy-spoon/_build/latest?definitionId=16&branchName=master)
 [![NuGet](https://img.shields.io/nuget/v/demofluffyspoon.contracts.svg)](https://nuget.org/packages/demofluffyspoon.contracts)
 
 ## List of Services
