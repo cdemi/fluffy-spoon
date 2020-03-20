@@ -1,8 +1,8 @@
-﻿using demofluffyspoon.contracts.Models;
+﻿using System.Threading.Tasks;
+using DemoFluffySpoon.Contracts.Models;
 using Orleans;
-using System.Threading.Tasks;
 
-namespace demofluffyspoon.contracts.Grains
+namespace DemoFluffySpoon.Contracts.Grains
 {
     public interface IUserRegistrationStatusGrain : IGrainWithGuidKey
     {

@@ -1,22 +1,25 @@
-using demofluffyspoon.contracts;
-using demofluffyspoon.contracts.Grains;
-using demofluffyspoon.contracts.Models;
-using Microsoft.Extensions.Logging;
-using Orleans;
-using Orleans.Streams;
 using System;
 using System.Threading.Tasks;
+using DemoFluffySpoon.Contracts;
+using DemoFluffySpoon.Contracts.Grains;
+using DemoFluffySpoon.Contracts.Models;
+using Microsoft.Extensions.Logging;
+using Orleans;
+using Orleans.Runtime;
+using Orleans.Streams;
 
-namespace demofluffyspoon.registration.grains.Grains
+namespace DemoFluffySpoon.Registration.Grains.Grains
 {
-    public class UserRegistrationGrain : Grain<RegistrationState>, IUserRegistrationGrain
+    public class UserRegistrationGrain : Grain, IUserRegistrationGrain
     {
+        private readonly IPersistentState<RegistrationState> _registrationState;
         private readonly ILogger<RegistrationState> _logger;
 
         private IAsyncStream<UserRegisteredEvent> _userRegisteredStream;
 
-        public UserRegistrationGrain(ILogger<RegistrationState> logger)
+        public UserRegistrationGrain([PersistentState(nameof(RegistrationState))] IPersistentState<RegistrationState> registrationState, ILogger<RegistrationState> logger)
         {
+            _registrationState = registrationState;
             _logger = logger;
         }
         
@@ -25,7 +28,7 @@ namespace demofluffyspoon.registration.grains.Grains
             var streamProvider = GetStreamProvider(Constants.StreamProviderName);
 
             // Producer
-            _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(State.Id, nameof(UserRegisteredEvent));
+            _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(_registrationState.State.Id, nameof(UserRegisteredEvent));
             
             await base.OnActivateAsync();
         }
@@ -34,7 +37,7 @@ namespace demofluffyspoon.registration.grains.Grains
         {
             var email = this.GetPrimaryKeyString();
 
-            if (State.IsRegistered)
+            if (_registrationState.State.IsRegistered)
             {
                 _logger.LogWarning("{email} is already registered", email);
                 
@@ -42,9 +45,9 @@ namespace demofluffyspoon.registration.grains.Grains
             }
 
             await _userRegisteredStream.OnNextAsync(new UserRegisteredEvent {Name = name, Surname = surname, Email = email});
-            State.IsRegistered = true;
+            _registrationState.State.IsRegistered = true;
 
-            return State.Id;
+            return _registrationState.State.Id;
         }
     }
 }

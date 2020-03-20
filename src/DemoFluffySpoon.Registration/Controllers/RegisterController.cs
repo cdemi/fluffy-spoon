@@ -1,13 +1,13 @@
-﻿using demofluffyspoon.contracts.Grains;
-using demofluffyspoon.contracts.Models;
-using fluffyspoon.registration.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Orleans;
-using System;
+﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using DemoFluffySpoon.Contracts.Grains;
+using DemoFluffySpoon.Contracts.Models;
+using DemoFluffySpoon.Registration.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Orleans;
 
-namespace fluffyspoon.registration.Controllers
+namespace DemoFluffySpoon.Registration.Controllers
 {
     [ApiController]
     [Route("v{version:apiVersion}/register")]

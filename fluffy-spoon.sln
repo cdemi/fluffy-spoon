@@ -29,17 +29,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "performance", "performance", "{ED39EC32-14DC-42F0-81FC-44365E078CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fluffyspoon.registration", "src\fluffyspoon.registration\fluffyspoon.registration.csproj", "{0F12CBAA-7B9F-4AA0-BC43-626899818D02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFluffySpoon.Registration", "src\DemoFluffySpoon.Registration\DemoFluffySpoon.Registration.csproj", "{0F12CBAA-7B9F-4AA0-BC43-626899818D02}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{2575B22C-D459-4CB8-9C86-F995D217F71C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demofluffyspoon.contracts", "src\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj", "{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFluffySpoon.Contracts", "src\DemoFluffySpoon.Contracts\DemoFluffySpoon.Contracts.csproj", "{B4B280C3-9E7F-46EE-BF38-E7E520D6FCA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{98433C1D-3ECB-48B7-A5A6-AE934329E4A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orleans.TelemetryConsumers.Prometheus", "src\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj", "{94C72B5D-CA17-48AB-9D79-B6FA3CD4F255}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demofluffyspoon.registration.grains", "src\demofluffyspoon.registration.grains\demofluffyspoon.registration.grains.csproj", "{E1546556-DBD8-4D4A-AFE3-958505302151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoFluffySpoon.Registration.Grains", "src\DemoFluffySpoon.Registration.Grains\DemoFluffySpoon.Registration.Grains.csproj", "{E1546556-DBD8-4D4A-AFE3-958505302151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using GiG.Core.Logging.All.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace fluffyspoon.registration
+namespace DemoFluffySpoon.Registration
 {
     public class Program
     {

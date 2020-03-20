@@ -1,19 +1,27 @@
-using demofluffyspoon.contracts;
-using demofluffyspoon.contracts.Grains;
-using demofluffyspoon.contracts.Models;
-using Orleans;
-using Orleans.Concurrency;
-using Orleans.Streams;
 using System;
 using System.Threading.Tasks;
+using DemoFluffySpoon.Contracts;
+using DemoFluffySpoon.Contracts.Grains;
+using DemoFluffySpoon.Contracts.Models;
+using Orleans;
+using Orleans.Concurrency;
+using Orleans.Runtime;
+using Orleans.Streams;
 
-namespace demofluffyspoon.registration.grains.Grains
+namespace DemoFluffySpoon.Registration.Grains.Grains
 {
     [ImplicitStreamSubscription(nameof(UserRegisteredEvent))]
     [ImplicitStreamSubscription(nameof(UserVerificationEvent))]
     [Reentrant]
-    public class UserRegistrationStatusGrain : Grain<RegistrationStatusState>, IUserRegistrationStatusGrain, IAsyncObserver<UserRegisteredEvent>, IAsyncObserver<UserVerificationEvent>
+    public class UserRegistrationStatusGrain : Grain, IUserRegistrationStatusGrain, IAsyncObserver<UserRegisteredEvent>, IAsyncObserver<UserVerificationEvent>
     {
+        private readonly IPersistentState<RegistrationStatusState> _registrationStatusState;
+
+        public UserRegistrationStatusGrain([PersistentState(nameof(RegistrationStatusState))] IPersistentState<RegistrationStatusState> registrationStatusState)
+        {
+            _registrationStatusState = registrationStatusState;
+        }
+
         public override async Task OnActivateAsync()
         {
             var streamProvider = GetStreamProvider(Constants.StreamProviderName);
@@ -31,26 +39,26 @@ namespace demofluffyspoon.registration.grains.Grains
 
         public Task<RegistrationStatusState> GetAsync()
         {
-            return Task.FromResult(State);
+            return Task.FromResult(_registrationStatusState.State);
         }
 
         public Task OnNextAsync(UserRegisteredEvent item, StreamSequenceToken token = null)
         {
-            State.Status = UserRegistrationStatusEnum.Pending;
+            _registrationStatusState.State.Status = UserRegistrationStatusEnum.Pending;
             
             return Task.CompletedTask;
         }
         
         public Task OnNextAsync(UserVerificationEvent item, StreamSequenceToken token = null)
         {
-            State.Status = item.Status switch
+            _registrationStatusState.State.Status = item.Status switch
             {
                 UserVerificationStatusEnum.Verified => UserRegistrationStatusEnum.Verified,
                 UserVerificationStatusEnum.Blocked => UserRegistrationStatusEnum.Blocked,
-                _ => State.Status
+                _ => _registrationStatusState.State.Status
             };
             
-            State.UpdatedOn = DateTime.UtcNow;
+            _registrationStatusState.State.UpdatedOn = DateTime.UtcNow;
 
             return Task.CompletedTask;
         }

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace fluffyspoon.registration.ViewModels
+namespace DemoFluffySpoon.Registration.ViewModels
 {
     public class RegisterUserModel
     {
