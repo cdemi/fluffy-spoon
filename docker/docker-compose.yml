@@ -2,9 +2,9 @@ version: '3.4'
 
 services:
   registration:
-    image: fluffyspoon.registration
+    image: demofluffyspoon.registration
     build:
-      dockerfile: src/fluffyspoon.registration/Dockerfile
+      dockerfile: src/DemoFluffySpoon.Registration/Dockerfile
       context: ..
     environment:
       - ASPNETCORE_URLS=http://+:8080

@@ -7,16 +7,16 @@ WORKDIR /sln
 COPY NuGet.Config .
 COPY push.sh .
 COPY packages/ ./packages
-COPY ["src/fluffyspoon.registration/fluffyspoon.registration.csproj", "src/fluffyspoon.registration/"]
-RUN dotnet restore "src/fluffyspoon.registration/fluffyspoon.registration.csproj"
+COPY ["src/DemoFluffySpoon.Registration/DemoFluffySpoon.Registration.csproj", "src/DemoFluffySpoon.Registration/"]
+RUN dotnet restore "src/DemoFluffySpoon.Registration/DemoFluffySpoon.Registration.csproj"
 COPY . .
-WORKDIR "src/fluffyspoon.registration"
+WORKDIR "src/DemoFluffySpoon.Registration"
 ARG VERSION=1
-RUN dotnet publish "fluffyspoon.registration.csproj" /p:Version=$VERSION -c Release -o /app/publish
+RUN dotnet publish "DemoFluffySpoon.Registration.csproj" /p:Version=$VERSION -c Release -o /app/publish
 ARG GH_TOKEN=
 RUN /sln/push.sh
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "fluffyspoon.registration.dll"]
+ENTRYPOINT ["dotnet", "DemoFluffySpoon.Registration.dll"]
