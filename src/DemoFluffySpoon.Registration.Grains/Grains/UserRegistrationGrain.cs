@@ -17,22 +17,24 @@ namespace DemoFluffySpoon.Registration.Grains.Grains
 
         private IAsyncStream<UserRegisteredEvent> _userRegisteredStream;
 
-        public UserRegistrationGrain([PersistentState(nameof(RegistrationState))] IPersistentState<RegistrationState> registrationState, ILogger<RegistrationState> logger)
+        public UserRegistrationGrain([PersistentState(nameof(RegistrationState))]
+            IPersistentState<RegistrationState> registrationState, ILogger<RegistrationState> logger)
         {
             _registrationState = registrationState;
             _logger = logger;
         }
-        
+
         public override async Task OnActivateAsync()
         {
             var streamProvider = GetStreamProvider(Constants.StreamProviderName);
 
             // Producer
-            _userRegisteredStream = streamProvider.GetStream<UserRegisteredEvent>(_registrationState.State.Id, nameof(UserRegisteredEvent));
-            
+            _userRegisteredStream =
+                streamProvider.GetStream<UserRegisteredEvent>(_registrationState.State.Id, nameof(UserRegisteredEvent));
+
             await base.OnActivateAsync();
         }
-        
+
         public async Task<Guid?> RegisterAsync(string name, string surname)
         {
             var email = this.GetPrimaryKeyString();
@@ -40,12 +42,15 @@ namespace DemoFluffySpoon.Registration.Grains.Grains
             if (_registrationState.State.IsRegistered)
             {
                 _logger.LogWarning("{email} is already registered", email);
-                
+
                 return null;
             }
 
-            await _userRegisteredStream.OnNextAsync(new UserRegisteredEvent {Name = name, Surname = surname, Email = email});
+            await _userRegisteredStream.OnNextAsync(new UserRegisteredEvent
+                {Name = name, Surname = surname, Email = email});
             _registrationState.State.IsRegistered = true;
+
+            await _registrationState.WriteStateAsync();
 
             return _registrationState.State.Id;
         }
