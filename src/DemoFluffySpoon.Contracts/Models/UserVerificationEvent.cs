@@ -1,6 +1,6 @@
 using System;
 
-namespace demofluffyspoon.contracts.Models
+namespace DemoFluffySpoon.Contracts.Models
 {
     [Serializable]
     public class UserVerificationEvent

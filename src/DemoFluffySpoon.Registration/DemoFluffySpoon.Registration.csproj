@@ -38,8 +38,8 @@
    </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\demofluffyspoon.contracts\demofluffyspoon.contracts.csproj" />
-    <ProjectReference Include="..\demofluffyspoon.registration.grains\demofluffyspoon.registration.grains.csproj" />
+    <ProjectReference Include="..\DemoFluffySpoon.Contracts\DemoFluffySpoon.Contracts.csproj" />
+    <ProjectReference Include="..\DemoFluffySpoon.Registration.Grains\DemoFluffySpoon.Registration.Grains.csproj" />
     <ProjectReference Include="..\Orleans.TelemetryConsumers.Prometheus\Orleans.TelemetryConsumers.Prometheus.csproj" />
   </ItemGroup>
   

@@ -1,6 +1,7 @@
-using demofluffyspoon.contracts;
-using demofluffyspoon.contracts.Models;
-using demofluffyspoon.registration.grains.Grains;
+using System.Text.Json.Serialization;
+using DemoFluffySpoon.Contracts;
+using DemoFluffySpoon.Contracts.Models;
+using DemoFluffySpoon.Registration.Grains.Grains;
 using FluentValidation.AspNetCore;
 using GiG.Core.DistributedTracing.Web.Extensions;
 using GiG.Core.HealthChecks.Extensions;
@@ -23,10 +24,9 @@ using Orleans.Streams.Kafka.Config;
 using Orleans.TelemetryConsumers.Prometheus;
 using OrleansDashboard;
 using Prometheus;
-using System.Text.Json.Serialization;
 using HostBuilderContext = Microsoft.Extensions.Hosting.HostBuilderContext;
 
-namespace fluffyspoon.registration
+namespace DemoFluffySpoon.Registration
 {
     public class Startup
     {

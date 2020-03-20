@@ -1,4 +1,4 @@
-namespace demofluffyspoon.contracts.Models
+namespace DemoFluffySpoon.Contracts.Models
 {
     public enum UserVerificationStatusEnum
     {

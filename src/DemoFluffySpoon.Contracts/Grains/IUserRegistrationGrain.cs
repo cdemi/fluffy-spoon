@@ -1,8 +1,8 @@
-﻿using Orleans;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Orleans;
 
-namespace demofluffyspoon.contracts.Grains
+namespace DemoFluffySpoon.Contracts.Grains
 {
     public interface IUserRegistrationGrain : IGrainWithStringKey
     {
