@@ -26,7 +26,7 @@
     <PackageReference Include="GiG.Core.Web.FluentValidation" Version="1.2.3.209" />
     <PackageReference Include="GiG.Core.Web.Hosting" Version="1.2.3.209" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
-    <PackageReference Include="Microsoft.Orleans.OrleansTelemetryConsumers.Linux" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Orleans.OrleansTelemetryConsumers.Linux" Version="3.1.5" />
     <PackageReference Include="Microsoft.Orleans.Server" Version="3.1.4" />
     <PackageReference Include="Microsoft.Orleans.CodeGenerator.MSBuild" Version="3.1.4">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
